@@ -256,6 +256,7 @@ print(f"""
 ██   ██║██║   ██║██╔══██╗╚════╝╚════██║
 ╚█████╔╝╚██████╔╝██████╔╝      ███████║  {Fore.LIGHTRED_EX}██╗ ██╗{Fore.RESET}
  ╚════╝  ╚═════╝ ╚═════╝       ╚══════╝  {Fore.LIGHTRED_EX}╚═╝ ╚═╝{Fore.RESET}  
+ 
           By @TweakPY - @vv1ck                                                                 
 """)	
 print(Fore.BLUE+'--{ Looking for a job? Well, this is the place to look for it }--'+Fore.RESET)
