@@ -1,5 +1,5 @@
-try:import re,urllib3;from colorama import Fore;from requests import get,post,packages;from time import sleep
-except ModuleNotFoundError:exit('[!] Download The Missing Module !')
+try:import re,urllib3;from colorama import Fore;from requests import get,post,packages;from time import sleep;from rich.console import Console;from rich.table import Table
+except Exception as e:print(f'[!] Download The Missing Module ! , {e}');exit()
 try:packages.urllib3.disable_warnings()
 except:urllib3.disable_warnings()
 
@@ -187,21 +187,27 @@ class Job:
                 l1=re.findall('"jobLevel":"(.*?)"',rq1.text)[0];l2=re.findall('"jobLevel":"(.*?)"',rq1.text)[1];l3=re.findall('"jobLevel":"(.*?)"',rq1.text)[2];l4=re.findall('"jobLevel":"(.*?)"',rq1.text)[3];l5=re.findall('"jobLevel":"(.*?)"',rq1.text)[4];l6=re.findall('"jobLevel":"(.*?)"',rq1.text)[5];l7=re.findall('"jobLevel":"(.*?)"',rq1.text)[6];l8=re.findall('"jobLevel":"(.*?)"',rq1.text)[7];l9=re.findall('"jobLevel":"(.*?)"',rq1.text)[8];l10=re.findall('"jobLevel":"(.*?)"',rq1.text)[9]
                 y1=re.findall('"yearsOfExperience":"(.*?)"',rq1.text)[0];y2=re.findall('"yearsOfExperience":"(.*?)"',rq1.text)[1];y3=re.findall('"yearsOfExperience":"(.*?)"',rq1.text)[2];y4=re.findall('"yearsOfExperience":"(.*?)"',rq1.text)[3];y5=re.findall('"yearsOfExperience":"(.*?)"',rq1.text)[4];y6=re.findall('"yearsOfExperience":"(.*?)"',rq1.text)[5];y7=re.findall('"yearsOfExperience":"(.*?)"',rq1.text)[6];y8=re.findall('"yearsOfExperience":"(.*?)"',rq1.text)[7];y9=re.findall('"yearsOfExperience":"(.*?)"',rq1.text)[8];y10=re.findall('"yearsOfExperience":"(.*?)"',rq1.text)[9]
             except:exit('[!] Error code: M1CD1 ..')
-            print(f"-------------------------------------------------------------------------------------------")
-            print(f'Num |   Title      |      Levle      |      Years Experience  ')
-            print(f'0   | -------------------------------------------------------------------------------------')         
-            print(f'1   |{t1}\t|\t{l1}\t|\t{y1}')              
-            print(f'2   |{t2}\t|\t{l2}\t|\t{y2}')     
-            print(f'3   |{t3}\t|\t{l3}\t|\t{y3}')       
-            print(f'4   |{t4}\t|\t{l4}\t|\t{y4}')       
-            print(f'5   |{t5}\t|\t{l5}\t|\t{y5}')
-            print(f'6   |{t6}\t|\t{l6}\t|\t{y6}')        
-            print(f'7   |{t7}\t|\t{l7}\t|\t{y7}') 
-            print(f'8   |{t8}\t|\t{l8}\t|\t{y8}')        
-            print(f'9   |{t9}\t|\t{l9}\t|\t{y9}')         
-            print(f'10  |{t10}\t|\t{l10}\t|\t{y10}')     
-            print(f"-------------------------------------------------------------------------------------------")	
-            ifinterested=int(input(f'[{Fore.LIGHTRED_EX}?{Fore.RESET}] which Job are You interested in From 1 to 10 : '))
+            table=Table(title="Jobs")
+            rows=[
+                ["1",t1,l1,y1],
+                ["2",t2,l2,y2],
+                ["3",t3,l3,y3],
+                ["4",t4,l4,y4],
+                ["5",t5,l5,y5],
+                ["6",t6,l6,y6],
+                ["7",t7,l7,y7],
+                ["8",t8,l8,y8],
+                ["9",t9,l9,y9],
+                ["10",t10,l10,y10]]
+            columns=["Num","Title","Level","Years Experience"]
+            table.add_column("Num", style="cyan", no_wrap=True)
+            table.add_column("Title", style="red")
+            table.add_column("Level", justify="center", style="green")
+            table.add_column("Years Experience", style="magenta")
+            for row in rows:table.add_row(*row)
+            console=Console()
+            console.print(table,justify="left")
+            ifinterested=int(input(f'\n[{Fore.LIGHTRED_EX}?{Fore.RESET}] which Job are You interested in From 1 to 10 : '))
             if ifinterested==1:Job_id=re.findall('{"jobId":"(.*?)"',rq1.text)[0]
             elif ifinterested==2:Job_id=re.findall('{"jobId":"(.*?)"',rq1.text)[1]
             elif ifinterested==3:Job_id=re.findall('{"jobId":"(.*?)"',rq1.text)[2]
